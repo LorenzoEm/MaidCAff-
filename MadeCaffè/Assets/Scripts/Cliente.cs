@@ -12,7 +12,7 @@ public class Cliente : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (tavolo.GetComponent<Tavolo>().clientiSeduti < 6)
+        if (tavolo.GetComponent<Tavolo>().clientiSeduti <= 6)
         {
             SetDesTinationToFreeChair(agent);
         }
@@ -27,7 +27,6 @@ public class Cliente : MonoBehaviour
     {
         string freeChair = "Sedia ("+ tavolo.GetComponent<Tavolo>().clientiSeduti+1 +")";
         
-        Debug.Log(this.tag);
         Vector3 destination = GameObject.Find(freeChair).transform.position;
         agent.SetDestination(destination);
     }

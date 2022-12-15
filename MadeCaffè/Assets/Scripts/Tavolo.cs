@@ -5,29 +5,26 @@ using UnityEngine;
 public class Tavolo : MonoBehaviour
 {
     public int clientiSeduti;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Cliente"))
+        Debug.Log("Porco dio");
+        if (other.tag == "pippo")
         {
+
             clientiSeduti++;
         }
+
     }
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Cliente"))
-        {
-            clientiSeduti--;
-        }
-    }
+
+
+
+
+    //public void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("pippo"))
+    //    {
+    //        clientiSeduti--;
+    //    }
+    //}
 }
