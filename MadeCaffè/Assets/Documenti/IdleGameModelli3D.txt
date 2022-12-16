@@ -1,0 +1,26 @@
+Modelli 3d
+	-Sedia(base)
+	-Tavolo
+	-Pentola pasta
+	-Pentola carne
+	-Tavolo da Cucina
+	-Mobili Vari
+		-dispensa
+		-mensole
+		-comò
+		-armadio
+		-cassetti 
+		-sportelli
+	-frigorifero
+	-cappa di aspirazione
+	-forno
+	-fuochi 6
+	-bottiglie
+		-acqua
+		-cocacola
+		-latte
+		-birra
+		-vino
+	-bicchieri
+	-piatti piani
+	-piatti cubi	

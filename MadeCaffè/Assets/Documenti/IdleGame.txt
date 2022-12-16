@@ -1,0 +1,52 @@
+Idee Idole Game
+
+Vestiti
+
+ - Maid
+ - Smoking
+ - Grembiule per cucina
+ - Cuoco
+ - Cappelli
+
+
+Stile Personaggi
+
+ - Chibi
+
+
+Personalizazione 
+
+ - Ambiente Gioco
+   - Interni
+   
+ - Personaggi 
+   - Colore Capelli
+   - Colore Occhi
+   - Colore Pelle
+   - personalizazione Viso
+   - Alteza
+   - Colore Vestiti
+   - Personalizazione di Abiti
+
+
+GamePLay 
+ il giocho consiste nel realizare il tuo Maid Caffè
+   - camioncino delle consegne
+   - reaizare i piatti di persona alla cuki mama, prendere le ordinazioni in prima persona tramite una ceck list
+
+  
+
+Obbiettivi 
+  - far diventre il tuo maid caffe migliore del mondo
+   
+
+Oggetti e Powe-Up
+
+   Power-up
+    - velocita nell cucinare 
+    - velocita nel servireal tavolo
+    - sponsor
+   Oggetti
+    - cibi (da decidere)
+    - Monete
+  
