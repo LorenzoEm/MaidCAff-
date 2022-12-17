@@ -5,13 +5,12 @@ using UnityEngine.AI;
 
 public class Maid : MonoBehaviour
 {
-    public GameObject tavolo;
     public NavMeshAgent agent;
+    public GameObject cliente = null;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        tavolo = GameObject.FindGameObjectWithTag("Tavolino");
     }
 
     // Update is called once per frame
@@ -20,8 +19,15 @@ public class Maid : MonoBehaviour
         
     }
 
-    public void TakeOrder(Vector3 dest)
+    public void TakeOrder()
     {
-        agent.SetDestination(dest);
+        agent.SetDestination(cliente.transform.position);
+        StartCoroutine(WaitForOrder());
+    }
+
+    private IEnumerator WaitForOrder()
+    {
+        yield return new WaitForSeconds(cliente.GetComponent<Cliente>().tempoAttesa);
+        Debug.Log($"Preso ordine {cliente.GetComponent<Cliente>().piatto} di {cliente.name}");
     }
 }

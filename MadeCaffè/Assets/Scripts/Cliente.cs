@@ -9,6 +9,8 @@ public class Cliente : MonoBehaviour
     public GameObject tavolo;
     public NavMeshAgent agent;
     public bool assignedMaid;
+    public string piatto;
+    public int tempoAttesa;
 
 
     // Start is called before the first frame update
@@ -27,7 +29,10 @@ public class Cliente : MonoBehaviour
     {
         int help = tavolo.GetComponent<Tavolo>().clientiSeduti+1;
         string freeChair = "Sedia ("+ help +")";
-        Vector3 destination = GameObject.Find(freeChair).transform.position;
-        agent.SetDestination(destination);
+        if (help <= 6)
+        {
+            Vector3 destination = GameObject.Find(freeChair).transform.position;
+            agent.SetDestination(destination);
+        }
     }
 }

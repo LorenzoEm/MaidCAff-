@@ -354,7 +354,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Cliente.cs"
 "Assets/Scripts/Maid.cs"
-"Assets/Scripts/Provatrigger.cs"
+"Assets/Scripts/Piatti.cs"
 "Assets/Scripts/Tavolo.cs"
 -langversion:9.0
 
