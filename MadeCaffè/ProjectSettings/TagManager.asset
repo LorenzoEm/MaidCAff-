@@ -9,6 +9,7 @@ TagManager:
   - Tavolo
   - Maid
   - pippo
+  - Bancone
   layers:
   - Default
   - TransparentFX

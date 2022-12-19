@@ -7,6 +7,7 @@ public class Maid : MonoBehaviour
 {
     public NavMeshAgent agent;
     public GameObject cliente = null;
+    public string ordine = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +23,24 @@ public class Maid : MonoBehaviour
     public void TakeOrder()
     {
         agent.SetDestination(cliente.transform.position);
-        StartCoroutine(WaitForOrder());
+        if (ordine!="")
+        {
+            GetOrder();
+        }
     }
 
-    private IEnumerator WaitForOrder()
+    private void GetOrder()
     {
-        yield return new WaitForSeconds(cliente.GetComponent<Cliente>().tempoAttesa);
         Debug.Log($"Preso ordine {cliente.GetComponent<Cliente>().piatto} di {cliente.name}");
+        ordine = cliente.GetComponent<Cliente>().piatto;
+        Debug.Log("Preso ordine");
+        if(ordine!="")
+        ReturnToDesk();
+    }
+
+    public void ReturnToDesk()
+    {
+        agent.SetDestination(GameObject.FindGameObjectWithTag("Bancone").transform.position);
+        Debug.Log("Famme sto coso");
     }
 }

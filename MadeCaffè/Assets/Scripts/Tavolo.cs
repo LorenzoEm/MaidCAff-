@@ -31,6 +31,7 @@ public class Tavolo : MonoBehaviour
             other.GetComponent<Cliente>().tempoAttesa = Piatti.dizionarioPiatti.Values.ElementAt(index);
             clientiSeduti++;
             StartCoroutine(CallMaid(other.gameObject));
+            Debug.Log("Attesa");
         }
 
     }

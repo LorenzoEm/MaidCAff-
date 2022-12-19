@@ -420,21 +420,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4641831584380861192, guid: 300a35e432c5e9b4b912c85f5e6d51b4, type: 3}
   m_PrefabInstance: {fileID: 4641831584651962454}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &275501919
-MonoBehaviour:
+--- !u!64 &275501923
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275501914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e516e44daeaa23c479b8d3632d23f9d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clientiSeduti: 0
-  clienti: []
-  maids: []
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &555614992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,6 +2851,14 @@ PrefabInstance:
     - target: {fileID: 4641831584380861196, guid: 300a35e432c5e9b4b912c85f5e6d51b4, type: 3}
       propertyPath: m_Name
       value: Bancone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641831584380861196, guid: 300a35e432c5e9b4b912c85f5e6d51b4, type: 3}
+      propertyPath: m_TagString
+      value: Bancone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641831584380861197, guid: 300a35e432c5e9b4b912c85f5e6d51b4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 300a35e432c5e9b4b912c85f5e6d51b4, type: 3}
