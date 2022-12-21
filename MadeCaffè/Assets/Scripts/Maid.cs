@@ -8,6 +8,8 @@ public class Maid : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject cliente = null;
     public string ordine = "";
+    public string piattoInMano = "";
+    private bool continueFlag;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class Maid : MonoBehaviour
     public void TakeOrder()
     {
         agent.SetDestination(cliente.transform.position);
-        if (ordine!="")
+        if (ordine=="")
         {
             GetOrder();
         }
@@ -42,5 +44,24 @@ public class Maid : MonoBehaviour
     {
         agent.SetDestination(GameObject.FindGameObjectWithTag("Bancone").transform.position);
         Debug.Log("Famme sto coso");
+
+    }
+
+    public void GetDish()
+    {
+        StartCoroutine(Attesa(cliente.GetComponent<Cliente>().tempoAttesa));
+        while (!continueFlag)
+        {
+            continue;
+        }
+        piattoInMano = cliente.GetComponent<Cliente>().piatto;
+        agent.SetDestination(cliente.transform.position);
+    }
+
+    private IEnumerator Attesa(int s)
+    {
+        continueFlag = false;
+        yield return new WaitForSeconds(s);
+        continueFlag = true;
     }
 }

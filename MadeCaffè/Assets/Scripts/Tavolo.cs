@@ -9,7 +9,7 @@ public class Tavolo : MonoBehaviour
     public int clientiSeduti;
     public List<GameObject> clienti;
     public List<GameObject> maids;
-    public int index;
+    public int index=0;
 
     private void Start()
     {
@@ -26,9 +26,6 @@ public class Tavolo : MonoBehaviour
         {
             other.gameObject.GetComponent<Cliente>().SetDesTinationToFreeChair(other.gameObject.GetComponent<NavMeshAgent>());
             clienti.Add(other.gameObject);
-            index = Random.Range(0, Piatti.dizionarioPiatti.Count);
-            other.GetComponent<Cliente>().piatto = Piatti.dizionarioPiatti.Keys.ElementAt(index);
-            other.GetComponent<Cliente>().tempoAttesa = Piatti.dizionarioPiatti.Values.ElementAt(index);
             clientiSeduti++;
             StartCoroutine(CallMaid(other.gameObject));
             Debug.Log("Attesa");
@@ -44,12 +41,17 @@ public class Tavolo : MonoBehaviour
             clientiSeduti--;
         }
     }
-    private IEnumerator CallMaid(GameObject cliente)
+    private IEnumerator CallMaid(GameObject client)
     {
-        yield return new WaitForSeconds(3);
-        GameObject maidRandom = maids[Random.Range(0,maids.Count)];
-        maidRandom.GetComponent<Maid>().cliente = cliente;
-        maidRandom.GetComponent<Maid>().TakeOrder();
+        GameObject selectedMaid;
+        if (index < maids.Count)
+        {
+            selectedMaid = maids[index];
+            selectedMaid.GetComponent<Maid>().cliente = client;
+            index++;
+            yield return new WaitForSeconds(3);
+            selectedMaid.GetComponent<Maid>().TakeOrder();
+        }
     }
 
 }
