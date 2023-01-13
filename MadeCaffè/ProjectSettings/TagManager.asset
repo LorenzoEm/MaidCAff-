@@ -5,12 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cliente
-  - Tavolino
   - Tavolo
   - Maid
-  - pippo
   - Bancone
   - Sedia
+  - gate
+  - pippo
   layers:
   - Default
   - TransparentFX

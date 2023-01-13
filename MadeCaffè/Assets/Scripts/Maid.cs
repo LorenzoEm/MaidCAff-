@@ -5,15 +5,15 @@ using UnityEngine.AI;
 
 public class Maid : MonoBehaviour
 {
+    public List<GameObject> sedie;
+    public string ordine;
+    public GameObject bancone;
     public NavMeshAgent agent;
-    public GameObject cliente = null;
-    public string ordine = "";
-    public string piattoInMano = "";
-    private bool continueFlag;
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        bancone = GameObject.Find("Bancone");
+        sedie.AddRange(GameObject.FindGameObjectsWithTag("Sedia"));
     }
 
     // Update is called once per frame
@@ -22,46 +22,24 @@ public class Maid : MonoBehaviour
         
     }
 
-    public void TakeOrder()
+    private IEnumerator countdownCheckCustomers()
     {
-        agent.SetDestination(cliente.transform.position);
-        if (ordine=="")
+        CheckCustomer();
+        yield return new WaitForSeconds(5);
+    }
+    private IEnumerator countdownCheckBancone()
+    {
+        yield return new WaitForSeconds(5);
+    }
+
+    public void CheckCustomer()
+    {
+        foreach(GameObject sedia in sedie)
         {
-            GetOrder();
+            if (sedia.GetComponent<Sedia>().occupata)
+            {
+
+            }
         }
-    }
-
-    private void GetOrder()
-    {
-        Debug.Log($"Preso ordine {cliente.GetComponent<Cliente>().piatto} di {cliente.name}");
-        ordine = cliente.GetComponent<Cliente>().piatto;
-        Debug.Log("Preso ordine");
-        if(ordine!="")
-        ReturnToDesk();
-    }
-
-    public void ReturnToDesk()
-    {
-        agent.SetDestination(GameObject.FindGameObjectWithTag("Bancone").transform.position);
-        Debug.Log("Famme sto coso");
-
-    }
-
-    public void GetDish()
-    {
-        StartCoroutine(Attesa(cliente.GetComponent<Cliente>().tempoAttesa));
-        while (!continueFlag)
-        {
-            continue;
-        }
-        piattoInMano = cliente.GetComponent<Cliente>().piatto;
-        agent.SetDestination(cliente.transform.position);
-    }
-
-    private IEnumerator Attesa(int s)
-    {
-        continueFlag = false;
-        yield return new WaitForSeconds(s);
-        continueFlag = true;
     }
 }

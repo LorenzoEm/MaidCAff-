@@ -1,51 +1,42 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Cliente : MonoBehaviour
 {
-    public bool requested;
-    public GameObject tavolo;
+    public List<GameObject> posti;
     public NavMeshAgent agent;
-    public bool assignedMaid;
-    public string piatto;
-    public int tempoAttesa;
-    public string sediaLibera;
-
-
     // Start is called before the first frame update
     void Start()
     {
-        requested = false;
-        tavolo = GameObject.FindGameObjectWithTag("Tavolino");
-        agent.SetDestination(GameObject.Find("Tavolo").transform.position);
+        posti.AddRange(GameObject.FindGameObjectsWithTag("Sedia"));
+        agent.SetDestination(new Vector3(16, 1, -18));
     }
+
     // Update is called once per frame
     void Update()
     {
         
     }
-    public void SetDesTinationToFreeChair(NavMeshAgent agent)
+
+    public void OnTriggerEnter(Collider other)
     {
-        int help = tavolo.GetComponent<Tavolo>().clientiSeduti+1;
-        sediaLibera = "Sedia ("+ help +")";
-        if (help <= 6)
+        int rand = Random.Range(0, posti.Count);
+        if (other.CompareTag("gate"))
         {
-            Vector3 destination = GameObject.Find(sediaLibera).transform.position;
-            agent.SetDestination(destination);
+            Debug.Log("entrato");
+            do
+            {
+                rand = Random.Range(0, posti.Count);
+                agent.SetDestination(posti[rand].transform.position);
+                Debug.Log($"vado a {posti[rand]}");
+            } while (posti[rand].GetComponent<Sedia>().prenotata != false);
+            posti[rand].GetComponent<Sedia>().prenotata = true;
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.name==sediaLibera)
-{
-            int index = UnityEngine.Random.Range(0, Piatti.dizionarioPiatti.Count);
-            piatto = Piatti.dizionarioPiatti.Keys.ElementAt(index);
-            tempoAttesa = Piatti.dizionarioPiatti.Values.ElementAt(index);
-            Debug.Log($"Voglio {piatto}");
+        if (other.CompareTag("Sedia"))
+        {
+            other.GetComponent<Sedia>().occupata = true;
         }
     }
 }
