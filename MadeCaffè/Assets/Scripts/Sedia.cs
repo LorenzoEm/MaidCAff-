@@ -6,6 +6,7 @@ public class Sedia : MonoBehaviour
 {
     public bool prenotata = false;
     public bool occupata = false;
+    public GameObject cliente;
     // Start is called before the first frame update
     void Start()
     {

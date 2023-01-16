@@ -22,9 +22,9 @@ public class Maid : MonoBehaviour
         
     }
 
-    private IEnumerator countdownCheckCustomers()
+    private IEnumerator countdownTakeOrder()
     {
-        CheckCustomer();
+        CheckTakeOrder();
         yield return new WaitForSeconds(5);
     }
     private IEnumerator countdownCheckBancone()
@@ -32,14 +32,23 @@ public class Maid : MonoBehaviour
         yield return new WaitForSeconds(5);
     }
 
-    public void CheckCustomer()
+    public void CheckTakeOrder()
     {
         foreach(GameObject sedia in sedie)
         {
-            if (sedia.GetComponent<Sedia>().occupata)
+            if (sedia.GetComponent<Sedia>().occupata && !sedia.GetComponent<Sedia>().cliente.GetComponent<Cliente>().ordinato)
             {
-
+                agent.SetDestination(sedia.transform.position);
+                if(Collision.Equals(sedia, gameObject))
+                {
+                    TakeOrder(sedia);
+                }
             }
         }
+    }
+
+    public void TakeOrder(GameObject sedia)
+    {
+        ordine = sedia.GetComponent<Sedia>().cliente.GetComponent<Cliente>().ordine;
     }
 }
