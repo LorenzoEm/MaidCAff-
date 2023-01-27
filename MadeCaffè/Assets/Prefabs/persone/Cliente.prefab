@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -6396472068271289470}
   - component: {fileID: -7427211240917248049}
   - component: {fileID: -7983526433802052291}
+  - component: {fileID: -8242795271538749873}
   m_Layer: 0
   m_Name: Cliente
   m_TagString: pippo
@@ -135,8 +136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a24d9433fdc8d54b9b0003b941c9907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ordine: 
   posti: []
   agent: {fileID: -6396472068271289470}
+  ordinato: 0
+  servito: 0
 --- !u!54 &-7983526433802052291
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -153,3 +157,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!208 &-8242795271538749873
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3999985663672298083}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.75, y: 1, z: 0.75}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
